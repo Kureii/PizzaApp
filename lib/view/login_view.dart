@@ -1,16 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzaapp/style.dart';
+import 'package:pizzaapp/view/register_page1_view.dart';
 import 'package:pizzaapp/viewmodel/login_viewmodel.dart';
 import 'dart:core';
-import 'dart:async';
 import 'package:email_validator/email_validator.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({Key? key, /*required this.title*/}) : super(key: key);
-  
-
-  //final String title;
+  const LoginView({Key? key}) : super(key: key);
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -175,7 +172,10 @@ class _LoginViewState extends State<LoginView> {
                   child: ElevatedButton(
                     style: myStyle.invBtnStyle(25),
                     onPressed: () {
-                      //TODO register View
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegisterPage1View()),
+                      );
                     },
                     child: Text("Registrovat se", style: myStyle.invBtnText, )
                   ),
