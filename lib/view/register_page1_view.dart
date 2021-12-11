@@ -3,6 +3,7 @@ import 'package:pizzaapp/style.dart';
 import 'package:pizzaapp/view/login_view.dart';
 import 'package:pizzaapp/view/register_page2_view.dart';
 import 'package:pizzaapp/viewmodel/register_viewmodel.dart';
+import 'package:email_validator/email_validator.dart';
 
 class RegisterPage1View extends StatefulWidget {
   const RegisterPage1View({Key? key}) : super(key: key);
@@ -18,12 +19,14 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
   final contllorerName = TextEditingController();
   final contllorerSurname = TextEditingController();
   final contllorerMail = TextEditingController();
+  final contllorerDateText = TextEditingController();
 
   @override
   void initState(){
     contllorerName.text = regVM.name;
     contllorerSurname.text = regVM.surname;
     contllorerMail.text = regVM.mail;
+    contllorerDateText.text = regVM.birthdayText;
     super.initState();
   }
 
@@ -32,6 +35,7 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
     contllorerName.dispose();
     contllorerSurname.dispose();
     contllorerMail.dispose();
+    contllorerDateText.dispose();
     super.dispose();
   }
 
@@ -42,7 +46,7 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
         child: Form(
           key: _formKey,
           child: SizedBox(
-            height: 400,
+            height: 500,
             width: 333,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,23 +73,15 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
                     autofocus: false,
                     cursorWidth: 2,
                     cursorRadius: const Radius.circular(2),
-                    cursorColor: myStyle.highlight,
-                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: myStyle.primary,
+                    keyboardType: TextInputType.name,
                     controller: contllorerName,
                     onChanged: (_name) {
                       setState(() {
                         regVM.name = _name;
                         regVM.canContinue1Logic();
                       });
-
                     },
-                    /*validator: (String? _mail) {
-                      if (EmailValidator.validate(loginVM.mail) || _mail == 'admin' ) {
-                        return null;
-                      } else {
-                        return 'E-mail není zadán korektně.';
-                      }
-                    },*/
                     decoration: InputDecoration(
                       labelText: "Jméno",
                       labelStyle: myStyle.label,
@@ -118,24 +114,62 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
                     controller: contllorerSurname,
                     cursorWidth: 2,
                     cursorRadius: const Radius.circular(2),
-                    cursorColor: myStyle.highlight,
-                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: myStyle.primary,
+                    keyboardType: TextInputType.name,
                     onChanged: (_surname) {
                       setState(() {
                         regVM.surname = _surname;
                         regVM.canContinue1Logic();
                       });
 
-                    },/*
-                    validator: (String? _mail) {
-                      if (EmailValidator.validate(loginVM.mail) || _mail == 'admin' ) {
-                        return null;
-                      } else {
-                        return 'E-mail není zadán korektně.';
-                      }
-                    },*/
+                    },
                     decoration: InputDecoration(
                       labelText: "Příjmení",
+                      labelStyle: myStyle.label,
+                      contentPadding: const EdgeInsets.all(10),
+                      enabledBorder: myStyle.unfocused,
+                      focusedBorder: myStyle.focused,
+                      errorBorder: myStyle.errUnfocused,
+                      focusedErrorBorder: myStyle.errfocused,
+                    ),
+                  ),
+                ),
+
+                //  birthdate
+                Container(
+                  height: 48,
+                  width: 333,
+                  margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                  padding: const EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    color: myStyle.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: [
+                      BoxShadow (
+                        color: myStyle.black.withOpacity(.25),
+                        offset: const Offset(2,2),
+                        blurRadius: 1,
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: TextFormField(
+                    autofocus: false,
+                    readOnly: true,
+                    controller: contllorerDateText,
+                    focusNode: FocusNode(
+                      canRequestFocus: false,
+                      skipTraversal: true,
+                    ),
+                    onTap: () async {
+                      await regVM.selectDate(context);
+                      setState(() {
+                        contllorerDateText.text = regVM.birthdayText;
+                        regVM.canContinue1Logic();
+                      });
+                    },
+                    decoration: InputDecoration(
+                      labelText: "Datum narození",
                       labelStyle: myStyle.label,
                       contentPadding: const EdgeInsets.all(10),
                       enabledBorder: myStyle.unfocused,
@@ -166,7 +200,7 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
                     controller: contllorerMail,
                     cursorWidth: 2,
                     cursorRadius: const Radius.circular(2),
-                    cursorColor: myStyle.highlight,
+                    cursorColor: myStyle.primary,
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (_mail) {
                       setState(() {
@@ -174,14 +208,14 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
                         regVM.canContinue1Logic();
                       });
 
-                    },/*
+                    },
                     validator: (String? _mail) {
-                      if (EmailValidator.validate(loginVM.mail) || _mail == 'admin' ) {
+                      if (EmailValidator.validate(regVM.mail) || _mail == 'admin' ) {
                         return null;
                       } else {
                         return 'E-mail není zadán korektně.';
                       }
-                    },*/
+                    },
                     decoration: InputDecoration(
                       labelText: "E-mail",
                       labelStyle: myStyle.label,

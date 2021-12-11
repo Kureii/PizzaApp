@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Style {
+  late Color primary;
+  late Color secundary;
   late Color highlight;
   late Color white;
   late Color black;
@@ -24,7 +25,9 @@ class Style {
 
 
   Style() {
-    highlight = const Color(0xFF307906);
+    primary = const Color(0xFF307906);
+    highlight = const Color(0xFF5BC41D);
+    secundary = const Color(0xFF760678);
     white = const Color(0xFFFFFFFF);
     black = const Color(0xFF201E1B);
     err = const Color(0xFF830020);
@@ -58,7 +61,7 @@ class Style {
     focused = OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(
-          color: highlight,
+          color: primary,
           width: 2,
         )
     );
@@ -79,9 +82,9 @@ class Style {
   }
 
   ButtonStyle btnStyle (double radius) => ElevatedButton.styleFrom(
-    onPrimary: Color.lerp(highlight, black, 0.35),
-    primary: highlight,
-    onSurface: highlight,
+    onPrimary: Color.lerp(primary, black, 0.35),
+    primary: primary,
+    onSurface: primary,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius)
     ),
@@ -89,7 +92,15 @@ class Style {
   ButtonStyle invBtnStyle(double radius) => ElevatedButton.styleFrom(
     onPrimary: Color.lerp(white, black, 0.25),
     primary: white,
-    onSurface: highlight,
+    onSurface: primary,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(radius)
+    ),
+  );
+  ButtonStyle dateBtn(double radius) => ElevatedButton.styleFrom(
+    onPrimary: const Color.fromARGB(255, 163, 147, 44),
+    primary: const Color.fromARGB(255, 44, 163, 60),
+    onSurface: const Color.fromARGB(255, 44, 153, 163),
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(radius)
     ),

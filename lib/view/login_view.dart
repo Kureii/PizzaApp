@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pizzaapp/style.dart';
 import 'package:pizzaapp/view/register_page1_view.dart';
@@ -52,7 +51,7 @@ class _LoginViewState extends State<LoginView> {
                     autofocus: false,
                     cursorWidth: 2,
                     cursorRadius: const Radius.circular(2),
-                    cursorColor: myStyle.highlight,
+                    cursorColor: myStyle.primary,
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (_mail) {
                       setState(() {
@@ -99,7 +98,7 @@ class _LoginViewState extends State<LoginView> {
                     autofocus: false,
                     cursorWidth: 2,
                     cursorRadius: const Radius.circular(2),
-                    cursorColor: myStyle.highlight,
+                    cursorColor: myStyle.primary,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: !loginVM.pswdVis,
                     onChanged: (_pswd) {
@@ -119,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
                         child: TextButton(
                           style: TextButton.styleFrom(
                             backgroundColor: myStyle.transparent,
-                            primary: myStyle.highlight,
+                            primary: myStyle.primary,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.horizontal(
                                   right: Radius.circular(6),
