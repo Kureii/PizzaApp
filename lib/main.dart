@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:pizzaapp/view/login_view.dart';
 import 'package:pizzaapp/style.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 
