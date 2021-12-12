@@ -60,12 +60,7 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
                     color: myStyle.white,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
-                      BoxShadow (
-                        color: myStyle.black.withOpacity(.25),
-                        offset: const Offset(2,2),
-                        blurRadius: 1,
-                        spreadRadius: 0,
-                      ),
+                      myStyle.shadow,
                     ],
                   ),
                   margin: const EdgeInsets.fromLTRB(0, 7.5, 0, 7.5),
@@ -100,12 +95,7 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
                     color: myStyle.white,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
-                      BoxShadow (
-                        color: myStyle.black.withOpacity(.25),
-                        offset: const Offset(2,2),
-                        blurRadius: 1,
-                        spreadRadius: 0,
-                      ),
+                      myStyle.shadow,
                     ],
                   ),
                   margin: const EdgeInsets.fromLTRB(0, 7.5, 0, 7.5),
@@ -145,12 +135,7 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
                     color: myStyle.white,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
-                      BoxShadow (
-                        color: myStyle.black.withOpacity(.25),
-                        offset: const Offset(2,2),
-                        blurRadius: 1,
-                        spreadRadius: 0,
-                      ),
+                      myStyle.shadow,
                     ],
                   ),
                   child: TextFormField(
@@ -186,12 +171,7 @@ class _RegisterPage1ViewState extends State<RegisterPage1View> {
                     color: myStyle.white,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
-                      BoxShadow (
-                        color: myStyle.black.withOpacity(.25),
-                        offset: const Offset(2,2),
-                        blurRadius: 1,
-                        spreadRadius: 0,
-                      ),
+                      myStyle.shadow,
                     ],
                   ),
                   margin: const EdgeInsets.fromLTRB(0, 7.5, 0, 7.5),

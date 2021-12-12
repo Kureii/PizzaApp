@@ -24,6 +24,7 @@ class Style {
   late OutlineInputBorder focused;
   late OutlineInputBorder errUnfocused;
   late OutlineInputBorder errfocused;
+  late BoxShadow shadow;
 
 
  Style() {
@@ -81,6 +82,12 @@ class Style {
        color: err.withOpacity(.5),
        width: 2,
      ),
+   );
+   shadow = BoxShadow (
+     color: black.withOpacity(.25),
+     offset: const Offset(2,2),
+     blurRadius: 1,
+     spreadRadius: 0,
    );
  }
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pizzaapp/style.dart';
 import 'package:pizzaapp/viewmodel/register_viewmodel.dart';
 import 'package:pizzaapp/view/register_page1_view.dart';
+import 'package:pizzaapp/view/register_page3_view.dart';
 
 class RegisterPage2View extends StatefulWidget {
   const RegisterPage2View({Key? key}) : super(key: key);
@@ -58,12 +59,7 @@ class _RegisterPage2ViewState extends State<RegisterPage2View> {
                     color: myStyle.white,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
-                      BoxShadow (
-                        color: myStyle.black.withOpacity(.25),
-                        offset: const Offset(2,2),
-                        blurRadius: 1,
-                        spreadRadius: 0,
-                      ),
+                      myStyle.shadow,
                     ],
                   ),
                   child: Column (
@@ -275,12 +271,7 @@ class _RegisterPage2ViewState extends State<RegisterPage2View> {
                     color: myStyle.white,
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
-                      BoxShadow (
-                        color: myStyle.black.withOpacity(.25),
-                        offset: const Offset(2,2),
-                        blurRadius: 1,
-                        spreadRadius: 0,
-                      ),
+                      myStyle.shadow,
                     ],
                   ),
                   margin: const EdgeInsets.fromLTRB(0, 7.5, 0, 7.5),
@@ -362,10 +353,10 @@ class _RegisterPage2ViewState extends State<RegisterPage2View> {
                   child: ElevatedButton(
                       style: myStyle.btnStyle(25),
                       onPressed: regVM.canContinue2 ? () {
-                        //Navigator.push(
-                          //context,
-                          //MaterialPageRoute(builder: (context) => const RegisterPage3View()),
-                        //);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const RegisterPage3View()),
+                        );
                       } : null,
                       child: Text("Pokračovat", style: myStyle.btnText, )
                   ),
