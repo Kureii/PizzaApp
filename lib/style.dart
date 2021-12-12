@@ -20,6 +20,7 @@ class Style {
   late TextStyle invBtnText;
   late Widget showPswd;
   late Widget hidePswd;
+  late Widget okSymbol;
   late OutlineInputBorder unfocused;
   late OutlineInputBorder focused;
   late OutlineInputBorder errUnfocused;
@@ -54,6 +55,11 @@ class Style {
      'lib/assets/icons/HidePsw.svg',
      color: black,
      semanticsLabel: "Skrýt heslo",
+   );
+   okSymbol = SvgPicture.asset(
+     'lib/assets/icons/ok_symbol.svg',
+     color: white,
+     semanticsLabel: "Ok",
    );
    unfocused = OutlineInputBorder(
        borderRadius: BorderRadius.circular(8),

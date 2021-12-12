@@ -23,21 +23,27 @@ class RegisterViewModel{
   bool conteCapitals = false;
   bool conteDigits = false;
   bool conte8chars = false;
+  bool condiAgree = false;
   double page2Width = 340;
   double pswdStrenColTmp = 0.0;
   double pswdContainerHeight = 48.0;
   double pswdProgressBarHeight = 0.0;
+  double chboxCircleSize = 0.0;
   String name = "";
   String surname = "";
   String mail = "";
   String passwd = "";
   String verPasswd = "";
   String birthdayText= "";
+  String town = "";
+  String street = "";
+  String zip = "";
   Color pswdTipColor = myStyle.white;
   Color lowrCaseColor = myStyle.white;
   Color capitalsColor = myStyle.white;
   Color digitsColor = myStyle.white;
   Color charsColor = myStyle.white;
+  Color chboxColor = myStyle.white;
 
   DateTime birthday = DateTime.now();
 
@@ -94,7 +100,11 @@ class RegisterViewModel{
   }
 
   canRegisterLogic(){
-
+    if(town.length > 1 && street.length > 5 && zip.length > 4 && condiAgree) {
+      canRegister = true;
+    } else {
+      canRegister = false;
+    }
   }
 
   pswdStre () {
